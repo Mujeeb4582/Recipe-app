@@ -11,9 +11,18 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-        <p class="notice bg-slate-600"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+  <body class="text-textColor text-base">
+  <main class="p-8">
+    <nav>
+    <div>
+      <div>
+      <%= link_to "Add Recipe", new_user_recipe_path(current_user), method: :post%>
+      </div>
+    </div>
+  </nav>
+        <p class="notice bg-variantColor"><%= notice %></p>
+       <p class="alert bg-red-500"><%= alert %></p>
     <%= yield %>
+  </main>
   </body>
 </html>

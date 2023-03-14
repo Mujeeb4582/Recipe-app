@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :recipes
+  resources :users do
+    resources :recipes, expect: %i[update, edit]
+  end
 end

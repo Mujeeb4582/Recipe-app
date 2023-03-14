@@ -1,7 +1,9 @@
 class RecipesController < ApplicationController
   # load_and_authorize_resource param_method: :recipe_params, only: %i[create]
   def index
-    @recipes = Recipe.all
+    @user = User.find_by(id: params[:user_id])
+    return render file: "#{Rails.root}/public/404.html", status: 404 unless @user
+    @recipes = @user.recipes
   end
 
   def show
@@ -14,22 +16,20 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = current_user.recipes.new(recipe_params)
     if @recipe.save
-      redirect_to @recipe
+      redirect_to user_recipe_path(@user, @recipe)
+      flash[:notice] = 'Recipe created'
     else
       render :new
+      flash[:alert] = 'Recipe not created'
     end
   end
 
   def destroy
     @recipe = Recipe.find_by(id: params[:id])
     return render file: "#{Rails.root}/public/404.html", status: 404 unless @recipe
-    # if @recipe.destroy
-    #   redirect_to recipes_path
-    # else
-    #   redirect_back fallback_location: recipes_path
-    # end
+
     if @recipe.destroy
       render json: { message: 'Recipe deleted' }, status: :ok
     else
@@ -38,6 +38,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :description)
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public, :user_id)
   end
 end
