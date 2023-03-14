@@ -4,7 +4,7 @@
 <ul class="flex flex-col gap-5">
   <% @recipes.each do |recipe|%>
   <li>
-    <a href="/users/<%= @user.id%>/recipes/<%=recipe.id%>" class="grid grid-cols-3 p-3 bg-gradient-to-r hover:from-orange-400 hover:to-yellow-500 min-h-[130px] text-start hover:shadow-[10px_9px_#00a195] border-b border-black cursor-pointer rounded-md">
+    <a href="/users/<%= @user.id%>/recipes/<%=recipe.id%>" class="grid grid-cols-1 sm:grid-cols-3 p-3 bg-gradient-to-r hover:from-orange-400 hover:to-yellow-500 min-h-[130px] text-start hover:shadow-[10px_9px_#00a195] border-b border-black cursor-pointer rounded-md">
       <div class="col-span-1 relative flex flex-col text-center">
         <h2 class="font-important text-important text-center m-auto"><%= recipe.name %></h2>
         <%= button_to "Remove", user_recipe_path(current_user,recipe),class: "button underline hover:text-red-600", method: :delete %>
