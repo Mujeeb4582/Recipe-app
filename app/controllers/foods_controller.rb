@@ -10,11 +10,11 @@ class FoodsController < ApplicationController
   end
 
   def new
-    @food =Food.new
+    @food = Food.new
   end
 
   def create
-    @food =Food.new(food_params)
+    @food = Food.new(food_params)
     @food.user = current_user
     if @food.save
       flash[:success] = 'Food successfully added!'
@@ -30,18 +30,15 @@ class FoodsController < ApplicationController
 
     if @food.user_id == current_user.id && @food.destroy
       flash[:success] = 'Food deleted successfully!'
-      redirect_to user_foods_path(current_user)
     else
       flash[:error] = 'Food deletion failed!'
-      redirect_to user_foods_path(current_user)
     end
+    redirect_to user_foods_path(current_user)
   end
-
 
   private
 
   def food_params
     params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
   end
-
 end
