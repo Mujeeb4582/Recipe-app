@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   # load_and_authorize_resource param_method: :recipe_params, only: %i[create]
   def index
-    @user = User.find_by(id: params[:user_id])
+    @user = User.find_by(id: params[:user_id]) # There might be some profile seeing links here so I used params instead of current_usr
     return render file: "#{Rails.root}/public/404.html", status: 404 unless @user
 
     @recipes = @user.recipes
