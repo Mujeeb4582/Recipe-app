@@ -1,3 +1,6 @@
+<%if@recipes.empty?%>
+<h1 class="text-important font-important text-center">The list is empty</h1>
+<%else%>
 <ul class="flex flex-col gap-5">
   <% @recipes.each do |recipe|%>
   <li>
@@ -13,6 +16,7 @@
   <%end%>
 </ul>
 
+<%end%>
 
 
 <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js" crossorigin="anonymous"></script>
