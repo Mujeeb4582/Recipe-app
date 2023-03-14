@@ -2,9 +2,9 @@ class CreateFoods < ActiveRecord::Migration[7.0]
   def change
     create_table :foods do |t|
       t.string :name
-      t.decimal :measurement_unit, precision: 8, scale: 2
+      t.string :measurement_unit
       t.decimal :price, precision: 8, scale: 2
-      t.integer :quantity
+      t.decimal :quantity, precision: 8, scale: 2
       t.references :user, null: false, foreign_key: { to_table: :users }
       t.timestamps
     end
