@@ -14,13 +14,13 @@ class User < ApplicationRecord
     all_foods = foods
     recipe_foods.each do |recipe_food|
       food = all_foods.select { |f| f.id == recipe_food.food_id }.first
-      food_in_shopping_list?(food,recipe_food, missing_foods)
+      food_in_shopping_list?(food, recipe_food, missing_foods)
     end
     total = missing_foods.sum { |food| food[:price] * food[:quantity] }
     [missing_foods, total]
   end
 
-  def food_in_shopping_list?(food,recipe_food, missing_foods)
+  def food_in_shopping_list?(food, recipe_food, missing_foods)
     if food.nil?
       missing_foods << {
         name: recipe_food.name,
