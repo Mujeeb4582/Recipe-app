@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   devise_for :users
   root 'public_recipes#index'
   resources :users do
-    resources :recipes, expect: %i[update, edit]
+    resources :recipes, expect: %i[update, edit] do
+      get '/general_shopping_list', to: 'shopping_list#index', as: 'general_shopping_list'
+    end
     resources :foods, only: [:index, :show, :new, :create, :destroy]
   end
 
