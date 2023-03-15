@@ -13,13 +13,7 @@
   <body class="text-textColor text-base bg-backgroundColor">
   <main class="p-8">
     <% if user_signed_in? %>
-    <nav>
-    <div>
-      <div>
-      <%= link_to "Add Recipe", new_user_recipe_path(current_user)%>
-<%= button_to "Log Out", destroy_user_session_path, method: :delete  %>      </div>
-    </div>
-  </nav>
+
     <%end%>
         <p class="notice bg-variantColor"><%= notice %></p>
         <p class="alert bg-red-500"><%= alert %></p>
