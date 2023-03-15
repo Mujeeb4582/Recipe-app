@@ -3,16 +3,16 @@
 <%else%>
   <ul class="flex flex-col gap-5">
     <% @recipes.each do |recipe|%>
-      <% if ((can? :read, recipe) && (recipe.public == true)) %>
-        <li>
-          <a href="/users/<%= @user.id%>/recipes/<%=recipe.id%>" class="grid grid-cols-1 sm:grid-cols-3 p-3 bg-gradient-to-r hover:from-orange-400 hover:to-yellow-500 min-h-[130px] text-start hover:shadow-[10px_9px_#00a195] border-b border-black cursor-pointer rounded-md">
+      <% if ((can? :read, recipe) || (recipe.public == true)) %>
+        <li class="grid grid-cols-1 sm:grid-cols-3 p-3 min-h-[130px] text-start  border-b border-black rounded-md">
             <div class="col-span-1 relative flex flex-col text-center">
               <h2 class="font-important text-important text-center m-auto"><%= recipe.name %></h2>
               <% if can? :delete, recipe%>
-                <%= button_to "Remove", user_recipe_path(current_user,recipe),class: "button underline hover:text-red-600", method: :delete %>
+                <%= button_to "Remove", user_recipe_path(current_user,recipe), method: :delete , class: "button underline hover:text-red-600" %>
               <%end%>
             </div>
-            <p class="col-span-2 py-4 px-2"><%= recipe.description %></p>
+            <a href="/users/<%= @user.id%>/recipes/<%=recipe.id%>" class="grid col-span-2 py-4 px-2 bg-gradient-to-r hover:from-orange-400 hover:to-yellow-500 hover:shadow-[10px_9px_#00a195] cursor-pointer">
+            <p class=""><%= recipe.description %></p>
           </a>
         </li>
       <%end%>
@@ -20,36 +20,7 @@
 
     </ul>
   <%end%>
-  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js" crossorigin="anonymous"></script>
-  <script>
-    const deleteButtons = document.querySelectorAll('.button');
-    deleteButtons.forEach(button => {
-        button.addEventListener('click', async (e) => {
-
-            e.preventDefault();
-            const confirm = window.confirm("Are you sure you want to delete this recipe?")
-          if(!confirm){
-              return;
-          }
-            // disable the button
-            button.disabled = true;
-           const response = await axios.delete(button.parentElement.action, {
-            headers: {
-                'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                'Content-Type':  'application/json',
-           } })
-           if(response.status === 200) {
-               button.parentElement.parentElement.parentElement.remove()
-               const notice = document.querySelector('.notice')
-                  notice.innerHTML = "Delete successful"
-           } else{
-             const error = document.querySelector('.alert')
-             // remove the disabled attribute
-                button.removeAttribute('disabled')
-            error.innerHTML = "Delete failed"
-           }
 
 
-        })
-    })
-  </script>
+
+
