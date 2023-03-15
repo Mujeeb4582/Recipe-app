@@ -14,13 +14,15 @@ class RecipesController < ApplicationController
   end
 
   def new
+    return render file: "#{Rails.root}/public/404.html", status: 404 unless current_user.id.to_s == params[:user_id]
+
     @recipe = Recipe.new
   end
 
   def create
     @recipe = current_user.recipes.new(recipe_params)
     if @recipe.save
-      redirect_to user_recipe_path(@user, @recipe)
+      redirect_to "/users/#{current_user.id}/recipes"
       flash[:notice] = 'Recipe created'
     else
       render :new
