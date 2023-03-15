@@ -81,5 +81,4 @@ group :development, :test do
   gem 'rspec-rails', '~> 6.0.0'
 end
 
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
+gem 'cancancan'

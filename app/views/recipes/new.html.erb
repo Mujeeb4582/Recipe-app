@@ -1,0 +1,31 @@
+
+<h1 class="font-important text-important text-center">Add A Recipe</h1>
+<%= form_with model: [current_user, @recipe], method: :post, local: true, class:"flex flex-col gap-5", scope: :recipe do |f| %>
+  <div>
+  <%= f.label :name %><br>
+  <%= f.text_field :name, class: "border px-2 focus:outline-none w-full py-1" %>
+  </div>
+
+ <div>
+  <%= f.label :description %><br>
+  <%= f.text_area :description, class: "border px-2 focus:outline-none w-full py-1" %>
+  </div>
+
+  <div>
+  <%= f.label :preparation_time %> in mins<br>
+  <%= f.number_field :preparation_time, class: "border px-2 focus:outline-none w-full py-1" %>
+  </div>
+
+    <div>
+  <%= f.label :cooking_time %> in mins<br>
+  <%= f.number_field :cooking_time, class: "border px-2 focus:outline-none w-full py-1" %>
+  </div>
+
+   <div class="">
+     <%= f.check_box :public, class: "" %>
+  <%= f.label :public %>
+  </div>
+
+<%= f.submit "Add Box" , class: "cursor-pointer w-full bg-gradient-to-l from-orange-300 to-pink-300 hover:text-cyan-600 font-bold py-1 hover:from-pink-300 hover:to-orange-300 text-black"%>
+<% end %>
+

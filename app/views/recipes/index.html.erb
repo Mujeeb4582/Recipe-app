@@ -1,0 +1,26 @@
+<%if @recipes.empty? %>
+  <h1 class="text-important font-important text-center">The list is empty</h1>
+<%else%>
+  <ul class="flex flex-col gap-5">
+    <% @recipes.each do |recipe|%>
+      <% if ((can? :read, recipe) || (recipe.public == true)) %>
+        <li class="grid grid-cols-1 sm:grid-cols-3 p-3 min-h-[130px] text-start  border-b border-black rounded-md">
+            <div class="col-span-1 relative flex flex-col text-center">
+              <h2 class="font-important text-important text-center m-auto"><%= recipe.name %></h2>
+              <% if can? :delete, recipe%>
+                <%= button_to "Remove", user_recipe_path(current_user,recipe), method: :delete , class: "button underline hover:text-red-600" %>
+              <%end%>
+            </div>
+            <a href="/users/<%= @user.id%>/recipes/<%=recipe.id%>" class="grid col-span-2 py-4 px-2 bg-gradient-to-r hover:from-orange-400 hover:to-yellow-500 hover:shadow-[10px_9px_#00a195] cursor-pointer">
+            <p class=""><%= recipe.description %></p>
+          </a>
+        </li>
+      <%end%>
+        <%end%>
+
+    </ul>
+  <%end%>
+
+
+
+
