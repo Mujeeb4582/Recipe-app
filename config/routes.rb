@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   devise_for :users
-  root '/public_recipes#index'
+  root 'public_recipes#index'
   resources :users do
     resources :recipes, expect: %i[update, edit] do
       get '/general_shopping_list', to: 'shopping_list#index', as: 'general_shopping_list'
