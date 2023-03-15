@@ -1,12 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './app/helpers/**/*.rb',
-    './app/javascript/**/*.js',
-    './app/views/**/*',
+    "./app/helpers/**/*.rb",
+    "./app/javascript/**/*.js",
+    "./app/views/**/*",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        // Configure your color palette here
+        backgroundColor: "#FB923C",
+      },
+    },
   },
   plugins: [],
-}
+};

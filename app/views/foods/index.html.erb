@@ -1,0 +1,46 @@
+<div class="py-6">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h1 class="font-bold text-4xl bg-gray-800 text-white py-2 rounded-md">Foods List</h1>
+      <%= render partial: "/components/message" %>
+      <div class='float-right mt-4 mb-4'>
+        <button class='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded'>
+          <%= link_to "Add Food", new_user_food_path %></button>
+      </div>
+      <table class="table-auto w-full mt-4">
+        <thead>
+          <tr class="bg-gray-800 text-white uppercase text-sm leading-normal">
+            <th class="px-6 py-3 text-center">Food</th>
+            <th class="px-6 py-3 text-center">Measurement Unit</th>
+            <th class="px-6 py-3 text-center">Unit Price</th>
+            <th class="px-6 py-3 text-center">Actions</th>
+          </tr>
+        </thead>
+        <% if @user.foods.empty? %>
+          <tbody>
+            <tr class="border-b border-gray-300">
+              <td colspan="4" class="px-6 py-4 whitespace-no-wrap text-red-600  hover:text-red-700">Please Add some data to the table!!!</td>
+            </tr>
+          </tbody>
+        <% else %>
+          <tbody class="text-gray-900 text-sm font-light">
+            <% @user.foods.each do |food| %>
+              <tr class="border-b border-gray-300 hover:bg-gray-200">
+                <td class="px-6 py-4 whitespace-no-wrap"><%= food.name %></td>
+                <td class="px-6 py-4 whitespace-no-wrap"><%= food.measurement_unit %></td>
+                <td class="px-6 py-4 whitespace-no-wrap"><%= "$ #{food.price}" %></td>
+                <td class="px-6 py-4 whitespace-no-wrap">
+                  <%= button_to user_food_path(@user, food), method: :delete, class: "inline-flex items-center justify-center px-2 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" do %>
+                    <%= render partial: "/components/delete_svg" %>
+                    Delete
+                  <% end %>
+                </td>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>
+</div>
