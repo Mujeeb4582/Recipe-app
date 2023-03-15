@@ -5,10 +5,10 @@ class Recipe < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   def total_price
-    self.foods.sum { |food| food.price * food.quantity }
+    foods.sum { |food| food.price * food.quantity }
   end
 
   def foods_count
-    self.foods.count
+    foods.count
   end
 end
