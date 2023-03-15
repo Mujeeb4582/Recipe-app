@@ -9,4 +9,6 @@ Rails.application.routes.draw do
     resources :recipes, expect: %i[update, edit]
     resources :foods, only: [:index, :show, :new, :create, :destroy]
   end
+
+  get '/public_recipes', to: 'public_recipes#index', as: 'public_recipes'
 end
