@@ -35,7 +35,7 @@ class RecipesController < ApplicationController
     return render file: "#{Rails.root}/public/404.html", status: 404 unless @recipe
 
     if @recipe.destroy
-      flash[:notice] = "Recipe Deleted"
+      flash[:notice] = 'Recipe Deleted'
       redirect_back(fallback_location: root_path)
     else
       redirect_back(fallback_location: root_path)
