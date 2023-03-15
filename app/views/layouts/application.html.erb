@@ -16,7 +16,7 @@
     <nav>
     <div>
       <div>
-      <%= link_to "Add Recipe", new_user_recipe_path(current_user), method: :get%>
+      <%= link_to "Add Recipe", new_user_recipe_path(current_user)%>
 <%= button_to "Log Out", destroy_user_session_path, method: :delete  %>      </div>
     </div>
   </nav>
@@ -25,7 +25,6 @@
         <p class="alert bg-red-500"><%= alert %></p>
     <%= yield %>
   </main>
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js" crossorigin="anonymous"></script>
 
   </body>
 </html>
