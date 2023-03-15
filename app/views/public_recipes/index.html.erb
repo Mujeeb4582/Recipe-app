@@ -6,12 +6,15 @@
 <ul class="flex flex-col gap-5">
   <% @recipes.each do |recipe|%>
   <li>
-    <a href="/users/<%= recipe.user_id%>/recipes/<%=recipe.id%>" class="grid grid-cols-3 p-3 bg-gradient-to-r hover:from-orange-400 hover:to-yellow-500 min-h-[130px] text-start hover:shadow-[10px_9px_#00a195] border-b border-black cursor-pointer rounded-md">
-      <div class="col-span-1 relative flex flex-col text-center">
-        <h2 class="font-important text-important text-center m-auto"><%= recipe.name %></h2>
+    <a href="/users/<%= recipe.user_id%>/recipes/<%=recipe.id%>" class="grid grid-cols-1 sm:grid-cols-3 p-3 bg-gradient-to-r hover:from-orange-400 hover:to-yellow-500 min-h-[130px] text-start hover:shadow-[10px_9px_#00a195] border-b border-black cursor-pointer rounded-md">
+      <div class="col-span-1 relative flex flex-col justify-center items-center">
+        <h2 class="font-important text-important"><%= recipe.name %></h2>
         <span>By: <%= recipe.user.name%></span>
         </div>
-      <p class="col-span-2 py-4 px-2"><%= recipe.description %></p>
+      <p class="col-span-2 py-4 px-2">
+        <span>Total Food Items: </span>
+        <span>Total Price:</span>
+      </p>
     </a>
     </li>
   <%end%>
