@@ -2,22 +2,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center">
       <h1 class="font-bold text-4xl bg-gray-800 text-white py-2 rounded-md">Foods List</h1>
-      <% if flash[:success] %>
-        <div class="flex p-4 mt-4 text-sm text-green-800 border border-green-300 rounded-lg
-        bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800" role="alert">
-          <svg aria-hidden="true"
-          class="flex-shrink-0 inline w-5 h-5 mr-3"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
-          <span class="sr-only">Info</span>
-          <div>
-            <span class="font-medium">Success alert!</span> <%= flash[:success] %>
-          </div>
-        </div>
-      <% end %>
+      <%= render partial: "/components/message" %>
       <div class='float-right mt-4 mb-4'>
         <button class='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded'>
           <%= link_to "Add Food", new_user_food_path %></button>
@@ -45,10 +30,8 @@
                 <td class="px-6 py-4 whitespace-no-wrap"><%= food.measurement_unit %></td>
                 <td class="px-6 py-4 whitespace-no-wrap"><%= "$ #{food.price}" %></td>
                 <td class="px-6 py-4 whitespace-no-wrap">
-                  <%= link_to user_food_path(@user, food), method: :delete, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "inline-flex items-center justify-center px-2 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" do %>
-                    <svg class="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M13.293 6.293a1 1 0 00-1.414 0L10 8.586l-1.879-1.88a1 1 0 00-1.414 1.414L8.586 10l-1.88 1.879a1 1 0 001.414 1.414L10 11.414l1.879 1.88a1 1 0 001.414-1.414L11.414 10l1.88-1.879a1 1 0 000-1.414z" clip-rule="evenodd" />
-                    </svg>
+                  <%= link_to user_food_path(@user, food), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "inline-flex items-center justify-center px-2 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" do %>
+                    <%= render partial: "/components/delete_svg" %>
                     Delete
                   <% end %>
                 </td>
