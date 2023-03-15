@@ -6,7 +6,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
@@ -23,7 +22,7 @@
   </nav>
     <%end%>
         <p class="notice bg-variantColor"><%= notice %></p>
-       <p class="alert bg-red-500"><%= alert %></p>
+        <p class="alert bg-red-500"><%= alert %></p>
     <%= yield %>
   </main>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js" crossorigin="anonymous"></script>

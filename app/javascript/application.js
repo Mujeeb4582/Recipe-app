@@ -1,6 +1,6 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "@hotwired/turbo-rails"
-import "controllers"
+import "@hotwired/turbo-rails";
+import "controllers";
 
 // const deleteButtons = document.querySelectorAll('.button');
 // deleteButtons.forEach(button => {
@@ -28,7 +28,6 @@ import "controllers"
 //             button.removeAttribute('disabled')
 //         error.innerHTML = "Delete failed"
 //        }
-
 
 //     })
 // })

@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   root 'recipes#index'
   resources :users do
     resources :recipes, expect: %i[update, edit]
+    resources :foods, only: [:index, :show, :new, :create, :destroy]
   end
 end

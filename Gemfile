@@ -74,7 +74,7 @@ end
 gem 'bullet', group: 'development'
 
 gem 'devise'
-
+gem 'htmlbeautifier'
 gem 'tailwindcss-rails', '~> 2.0'
 
 group :development, :test do
