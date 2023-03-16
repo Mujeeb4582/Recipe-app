@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :recipes, expect: %i[update, edit] do
       get '/general_shopping_list', to: 'shopping_list#index', as: 'general_shopping_list'
+      resources :recipe_foods, only: [:new, :create, :destroy, :update, :edit]
     end
     resources :foods, only: [:index, :show, :new, :create, :destroy]
   end
