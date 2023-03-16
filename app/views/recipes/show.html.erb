@@ -1,1 +1,35 @@
-<h1><%= @recipe.name%></h1>
+<section class="recipie-details">
+  <h1 class="text-4xl"><%= @recipe.name%></h1>
+  <div class="recipe-state">
+    <% if can? :update, @recipe %>
+      <%= button_to(@recipe.public? ? "Make Private" : "Make Public", toggle_recipe_privacy_path(@recipe), method: :put, class: "update-recipe") %>
+    <% end %>
+      <% if @recipe.public %>
+        <span class="public">Public</span>
+      <% else %>
+        <span class="private">Private</span>
+      <% end %>
+  </div>
+  <h2>
+    <%= "Preparation time: #{@recipe.preparation_time}"%>
+  </h2>
+
+  <h3>
+    <%= "Cooking time: #{@recipe.cooking_time}" %>
+  </h3>
+  <h4>Desciption</h4>
+  <p>
+    <%= @recipe.description %>
+  </p>
+  <div class='float-left mt-4 mb-4'>
+    <button class='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded'>
+      <%= link_to "Generate shopping list" %>
+    </button>
+  </div>
+  <div class='float-right mt-4 mb-4'>
+    <button class='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded'>
+      <%= link_to "Add ingradient", new_user_food_path %>
+    </button>
+  </div>
+
+</section>
