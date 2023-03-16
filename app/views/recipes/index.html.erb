@@ -1,6 +1,6 @@
 
- <div class="flex flex-col gap-3 py-3">
- <h1 class="font-bold text-4xl bg-gray-800 text-white py-2 rounded-md text-center">Recipes List</h1>
+ <div class="flex flex-col gap-3 px-4 py-6">
+ <h1 class="font-bold text-important bg-mainTheme text-white py-4 rounded-md text-center">Recipes List</h1>
       <%= render partial: "/components/message" %>
   <div class='float-right w-full mt-4 mb-4'>
         <button class='bg-blue-500 float-right hover:bg-blue-600 text-white font-bold py-2 px-4 rounded '>
@@ -10,24 +10,32 @@
 <%if @recipes.empty? %>
   <h1 class="text-important font-important text-center">The list is empty</h1>
 <%else%>
+  <div class="px-4">
+     <h1 class="font-bold text-important bg-mainTheme text-white py-4 rounded-md text-center grid grid-cols-1 sm:grid-cols-3 p-3">
+     <span class="col-span-1">Recipes Name</span>
+     <span class="sm:col-span-2 hidden sm:inline">Description</span>
+     </h1>
+
   <ul class="flex flex-col gap-8">
     <% @recipes.each do |recipe|%>
       <% if ((can? :read, recipe) || (recipe.public == true)) %>
-        <li class="grid grid-cols-1 sm:grid-cols-3 p-3 min-h-[130px] text-start  border-b border-black rounded-md">
-            <div class="col-span-1 relative flex flex-col text-center">
+        <li class=" text-start  border-b border-black rounded-md mt-4">
+            <a href="/users/<%= @user.id%>/recipes/<%=recipe.id%>" class="min-h-[130px] h-full grid grid-cols-1 sm:grid-cols-3 p-3  py-4 px-2 cursor-pointer hover:shadow-custom">
+
+            <div class="col-span-1 -z-10 relative flex flex-col text-center">
               <h2 class="font-important text-important text-center m-auto"><%= recipe.name %></h2>
               <% if can? :delete, recipe%>
-                <%= button_to "Remove", user_recipe_path(current_user,recipe), method: :delete , class: "button underline hover:text-red-600" %>
+                <%= button_to "Remove", user_recipe_path(current_user,recipe), method: :delete , class: "button inline-flex items-center justify-center px-2 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" %>
               <%end%>
             </div>
-            <a href="/users/<%= @user.id%>/recipes/<%=recipe.id%>" class="grid col-span-2 py-4 px-2 bg-gradient-to-r hover:from-orange-400 hover:to-yellow-500 hover:shadow-[10px_9px_#00a195] cursor-pointer">
-            <p class=""><%= recipe.description %></p>
+            <p class="col-span-2"><%= recipe.description %></p>
           </a>
         </li>
       <%end%>
         <%end%>
 
     </ul>
+  </div>
   <%end%>
 
 
