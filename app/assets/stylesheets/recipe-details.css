@@ -1,0 +1,19 @@
+.recipe-state {
+  display: inline-block;
+  float: right;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.recipe-state .public {
+  padding: 0.5rem;
+  background-color: green;
+  color: #fff;
+}
+
+.recipe-state .private {
+  background-color: #9ca3af;
+  color: #fff;
+}
