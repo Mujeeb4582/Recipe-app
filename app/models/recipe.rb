@@ -9,6 +9,6 @@ class Recipe < ApplicationRecord
   end
 
   def foods_count
-    foods.count
+    foods.length
   end
 end

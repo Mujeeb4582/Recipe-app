@@ -70,8 +70,10 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
-
-gem 'bullet', group: 'development'
+group :test, :development do
+  gem 'bullet'
+  # other test gems
+end
 
 gem 'devise'
 gem 'htmlbeautifier'
@@ -85,3 +87,8 @@ gem 'cancancan'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+
+gem 'faker'
+group :test do
+  gem 'factory_bot_rails'
+end
