@@ -7,16 +7,18 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "navbar", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body class="text-textColor text-base bg-backgroundColor">
-  <main class="p-8">
-    <% if user_signed_in? %>
+    <%= render partial: "/components/navbar" %>
+  <main>
+      <div>
+        <p class="notice text-xl bg-green-700 text-white text-center"><%= notice %></p>
+        <p class="alert text-lg bg-red-500 text-white text-center"><%= alert %></p>
+      </div>
 
-    <%end%>
-        <p class="notice bg-variantColor"><%= notice %></p>
-        <p class="alert bg-red-500"><%= alert %></p>
     <%= yield %>
   </main>
 
