@@ -4,4 +4,10 @@ class Recipe < ApplicationRecord
   has_many :foods, through: :recipe_foods
   validates :name, presence: true
   validates :description, presence: true
+
+  scope :public_recipes, -> { where(public: true).order(created_at: :desc) }
+
+  def toggle_privacy!
+    update(public: !public)
+  end
 end
