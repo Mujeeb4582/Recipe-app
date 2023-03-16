@@ -1,7 +1,7 @@
-<div class="min-h-screen bg-gray-100 py-6">
+<div class="min-h-screen bg-gray-200 py-6">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-left">
-      <h1 class="font-bold text-center text-4xl bg-blue-500 text-white py-2 rounded-md">Add Food</h1>
+      <h1 class="font-bold text-center text-important bg-blue-600 text-white py-2 rounded-md">Add Food</h1>
       <%= form_with model: @food, url: user_foods_path, method: :post, data: { turbo: false } do |f| %>
         <div class="mb-4">
           <%= f.label :name, "Food name",class: "block text-gray-700 font-bold mb-2" %>

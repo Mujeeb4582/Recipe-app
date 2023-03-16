@@ -19,7 +19,7 @@ module.exports = {
       normal: ["Inter", "sans-serif"],
     },
     fontSize: {
-      important: ["2rem", "2.25rem"],
+      important: ["1.5rem", "1.25rem"],
     },
   },
   plugins: [],
