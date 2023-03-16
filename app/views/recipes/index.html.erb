@@ -15,7 +15,7 @@
       <% if ((can? :read, recipe) || (recipe.public == true)) %>
         <li class="grid grid-cols-1 sm:grid-cols-3 p-3 min-h-[130px] text-start  border-b border-black rounded-md">
             <div class="col-span-1 relative flex flex-col text-center">
-              <h2 class="font-important text-important text-center m-auto"><%= recipe.name %></h2>
+              <h2 class="font-important text-important text-center m-auto"><%= link_to recipe.name, user_recipe_path(@user, recipe) %></h2>
               <% if can? :delete, recipe%>
                 <%= button_to "Remove", user_recipe_path(current_user,recipe), method: :delete , class: "button underline hover:text-red-600" %>
               <%end%>

@@ -1,0 +1,18 @@
+<section class="min-h-screen bg-gray-200 py-6">
+<div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+  <h1 class="font-bold text-center text-2xl bg-blue-600 text-white py-2 mb-6 rounded-md">Add ingredient</h1>
+  <%= form_with url: user_recipe_recipe_foods_path(params[:recipe_id]), method: :post do |form| %>
+    <div class="mb-4">
+      <%= form.label :food_id, "Foods", class: "block text-gray-700 font-bold mb-2" %>
+      <%= form.select :food_id, @foods.collect {|food| [food.name, food.id]}, { include_blank: false }, class: "form-select py-3 mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50", placeholder: "Foods" %>
+    </div>
+    <div class="mb-4">
+      <%= form.label :quantity, "Quantity", class: "block text-gray-700 font-bold mb-2" %>
+      <%= form.number_field :quantity, class: "form-input mt-1 px-4 py-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50", placeholder: "Quantity" %>
+    </div>
+    <div class="flex justify-end">
+      <%= form.submit "Add Food", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+    </div>
+    <% end %>
+    </div>
+</section>
