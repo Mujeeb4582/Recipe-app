@@ -13,7 +13,7 @@ class User < ApplicationRecord
     missing_foods = []
     all_foods = foods
     recipe_foods.each do |recipe_food|
-      food = all_foods.select { |f| f.id == recipe_food.food_id }.first
+      food = all_foods.select { |f| f.name.downcase == recipe_food[:name].downcase }.first
       food_in_shopping_list?(food, recipe_food, missing_foods)
     end
     total = missing_foods.sum { |food| food[:price] * food[:quantity] }
@@ -21,17 +21,18 @@ class User < ApplicationRecord
   end
 
   def food_in_shopping_list?(food, recipe_food, missing_foods)
+    # p [food, recipe_food, missing_foods, "TES"]
     if food.nil?
       missing_foods << {
-        name: recipe_food.name,
-        quantity: recipe_food.quantity,
-        price: recipe_food.price,
+        name: recipe_food[:name],
+        quantity: recipe_food[:quantity],
+        price: recipe_food[:price],
         test: false
       }
-    elsif food.quantity < recipe_food.quantity
+    elsif food.quantity < recipe_food[:quantity]
       missing_foods << {
         name: food.name,
-        quantity: (recipe_food.quantity - food.quantity),
+        quantity: (recipe_food[:quantity] - food.quantity),
         price: food.price,
         test: true
       }
