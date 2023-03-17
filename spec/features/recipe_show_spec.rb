@@ -23,7 +23,7 @@ RSpec.feature 'RecipeShows', type: :system do
     it "can click on the 'Generate shopping list' button" do
       visit user_recipe_path(user, recipe)
       click_button 'Generate shopping list'
-      expect(page).to have_current_path(user_recipe_general_shopping_list_path(recipe.user, recipe))
+      expect(page).to have_current_path(general_shopping_list_path(recipe))
     end
   end
 

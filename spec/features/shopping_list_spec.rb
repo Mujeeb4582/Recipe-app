@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe '/users/:user_id/recipes/:recipe_id/general_shopping_list', type: :feature do
+describe '/general_shopping_list/:recipe_id', type: :feature do
   let(:user) { FactoryBot.create(:user) }
 
   before do
@@ -21,7 +21,7 @@ describe '/users/:user_id/recipes/:recipe_id/general_shopping_list', type: :feat
     food2 = FactoryBot.create(:food, user:)
     FactoryBot.create(:recipe_food, recipe:, food:)
     FactoryBot.create(:recipe_food, recipe:, food: food2)
-    visit "/users/#{user.id}/recipes/#{recipe.id}/general_shopping_list"
+    visit "/general_shopping_list/#{recipe.id}"
     expect(page).to have_text(food.name)
     recipe_foods = RecipeFood.where(recipe_id: recipe.id).includes(:food)
     recipe_foods_with_names = recipe_foods.map do |rf|
