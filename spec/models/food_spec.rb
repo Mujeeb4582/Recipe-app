@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Food, type: :model do
-
   describe 'Associations test' do
     it { should belong_to(:user) }
     it { should have_many(:recipe_foods).dependent(:destroy) }

@@ -6,9 +6,9 @@ RSpec.describe RecipeFoodsController, type: :controller do
   describe 'Testing routes' do
     login_user
     let(:user) { controller.current_user }
-    let(:recipe) { FactoryBot.create(:recipe, user: user) }
+    let(:recipe) { FactoryBot.create(:recipe, user:) }
     let(:food) { FactoryBot.create(:food) }
-    let(:recipe_food) { FactoryBot.create(:recipe_food, recipe: recipe, food: food) }
+    let(:recipe_food) { FactoryBot.create(:recipe_food, recipe:, food:) }
 
     describe 'when user is logged in' do
       it 'should return a 200 response' do
@@ -32,11 +32,10 @@ RSpec.describe RecipeFoodsController, type: :controller do
           }
         end
         context 'when valid params are passed' do
-
           it 'creates a new recipe food' do
-            expect {
+            expect do
               post :create, params: valid_params
-            }.to change(RecipeFood, :count).by(1)
+            end.to change(RecipeFood, :count).by(1)
           end
         end
 
@@ -46,17 +45,17 @@ RSpec.describe RecipeFoodsController, type: :controller do
           expect(response).to redirect_to(user_recipe_url(recipe.user, recipe))
           expect(flash[:notice]).to eq('Ingredient has been added successfully!')
         end
-    end
+      end
       describe 'PUT #update' do
-      let(:user) { controller.current_user }
-      let(:id) { recipe_food.id}
+        let(:user) { controller.current_user }
+        let(:id) { recipe_food.id }
         let(:valid_params) do
           {
             user_id: user.id,
             recipe_id: recipe.id,
             quantity: 3,
             food_id: food.id,
-            id: id
+            id:
           }
         end
         it 'updates the recipe food' do
@@ -76,19 +75,19 @@ RSpec.describe RecipeFoodsController, type: :controller do
       end
 
       describe 'DELETE #destroy' do
-      let(:valid_params) do
-        {
-          user_id: user.id,
-          recipe_id: recipe.id,
-          id: recipe_food.id
-        }
-      end
+        let(:valid_params) do
+          {
+            user_id: user.id,
+            recipe_id: recipe.id,
+            id: recipe_food.id
+          }
+        end
         it 'deletes the recipe food' do
           recipe_food
 
-          expect {
+          expect do
             delete :destroy, params: valid_params
-          }.to change(RecipeFood, :count).by(-1)
+          end.to change(RecipeFood, :count).by(-1)
         end
 
         it 'redirects to the recipe page' do
@@ -101,4 +100,3 @@ RSpec.describe RecipeFoodsController, type: :controller do
     end
   end
 end
-
