@@ -1,7 +1,7 @@
-<div class="py-6">
+<div class="py-6 ">
   <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center">
-      <h1 class="font-bold text-important bg-mainTheme text-white py-4 rounded-md">Foods List</h1>
+      <h1 class="font-bold text-important bg-mainTheme dark:bg-darkTheme text-white py-4 rounded-md">Foods List</h1>
       <%= render partial: "/components/message" %>
       <div class='float-right mt-4 mb-4'>
         <button class='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded'>
@@ -10,7 +10,7 @@
       <div class="overflow-auto table-auto w-full mt-4">
       <table class="table-auto w-full mt-4">
         <thead>
-          <tr class="bg-mainTheme text-white uppercase text-sm leading-normal">
+          <tr class="bg-mainTheme dark:bg-darkTheme text-white uppercase text-sm leading-normal">
             <th class="sm:px-6 sm:py-3 px-2 py-2 text-center">Food</th>
             <th class="px-6 py-3 text-center">Measurement Unit</th>
             <th class="px-6 py-3 text-center">Unit Price</th>
@@ -24,9 +24,9 @@
             </tr>
           </tbody>
         <% else %>
-          <tbody class="text-gray-900 text-sm font-light">
+          <tbody class=" text-gray-900 dark:text-white text-sm font-light">
             <% @user.foods.each do |food| %>
-              <tr class="border-b border-gray-300 hover:bg-gray-200">
+              <tr class="border-b border-gray-300 hover:bg-gray-200 dark:hover:bg-black dark:hover:shadow-custom">
                 <td class="px-6 py-4 whitespace-no-wrap"><%= food.name %></td>
                 <td class="px-6 py-4 whitespace-no-wrap"><%= food.measurement_unit %></td>
                 <td class="px-6 py-4 whitespace-no-wrap"><%= "$ #{food.price}" %></td>

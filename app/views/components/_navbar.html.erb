@@ -1,4 +1,4 @@
-    <nav class="bg-mainTheme z-50">
+    <nav class="bg-mainTheme dark:bg-darkTheme z-50">
       <div class="logo">
                 <%= link_to "Recipes", root_path, class: "" %>
       </div>
@@ -12,6 +12,14 @@
           <%= link_to "Recipe List", user_recipes_path(current_user), class: "nav-link" %>
           <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %>
           <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "logout-btn" %>
+          <div class="theme-changer hover:shadow-custom rounded-full p-1">
+            <div class="light-theme">
+            <%= render partial: "components/sun_svg" %>
+            </div>
+            <div class="night-theme hidden">
+            <%= render partial: "components/moon_svg" %>
+            </div>
+          </div>
         <% else %>
           <%= link_to "Home", root_path, class: "nav-link" %>
           <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
@@ -19,3 +27,13 @@
         <% end %>
       </div>
     </nav>
+
+<script>
+const themeChanger = document.querySelector('.theme-changer');
+themeChanger.addEventListener('click', () => {
+  document.documentElement.classList.toggle('dark');
+  themeChanger.children[0].classList.toggle('hidden');
+  themeChanger.children[1].classList.toggle('hidden');
+});
+
+</script>

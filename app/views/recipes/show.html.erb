@@ -1,6 +1,6 @@
 <section class="py-6">
   <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
-    <h1 class="font-bold text-4xl text-center text-gray-900 py-3">Recipe Name: <%= @recipe.name%></h1>
+    <h1 class="font-bold text-4xl text-center  text-gray-900 dark:text-white py-3">Recipe Name: <%= @recipe.name%></h1>
     <div class="recipe-state flex items-center mb-4">
       <% if can? :update, @recipe %>
         <%= button_to(@recipe.public? ? "Make Private" : "Make Public", toggle_recipe_privacy_path(@recipe), method: :put, class: "update-recipe bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-4") %>
@@ -11,13 +11,13 @@
         <span class="uppercase py-1 px-2 text-white bg-red-700">Private</span>
       <% end %>
     </div>
-    <h2 class="mb-3 text-3xl text-gray-900">
+    <h2 class="mb-3 text-3xl  text-gray-900 dark:text-white">
       <%= "Preparation time: #{@recipe.preparation_time} mins"%>
     </h2>
-    <h3 class="mb-3 text-3xl text-gray-900">
+    <h3 class="mb-3 text-3xl  text-gray-900 dark:text-white">
       <%= "Cooking time: #{@recipe.cooking_time} mins" %>
     </h3>
-    <h4 class="mb-2 text-2xl text-gray-900">Description</h4>
+    <h4 class="mb-2 text-2xl  text-gray-900 dark:text-white">Description</h4>
     <p class="mb-4 ml-4 text-lg">
       <%= @recipe.description %>
     </p>
@@ -42,9 +42,9 @@
           <th class="px-6 py-3 text-center">Actions</th>
         </tr>
       </thead>
-      <tbody class="text-gray-900 text-sm font-light">
+      <tbody class=" text-gray-900 dark:text-white text-sm font-light">
         <% @recipe.recipe_foods.includes(:food).each do |ingredient| %>
-        <tr class="border-b border-gray-300 hover:bg-gray-200 text-center">
+        <tr class="border-b border-gray-300 hover:bg-gray-200 dark:hover:bg-black dark:hover:shadow-custom text-center">
           <td class="px-6 py-4 whitespace-no-wrap"><%= ingredient.food.name %></td>
           <td class="px-6 py-4 whitespace-no-wrap"><%= ingredient.quantity %></td>
           <td class="px-6 py-4 whitespace-no-wrap">$ <%= ingredient.quantity* ingredient.food.price %></td>

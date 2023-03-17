@@ -2,7 +2,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center">
       <h1 class="font-bold text-4xl bg-gray-800 text-white py-2 rounded-md">Shopping List</h1>
-      <div class='flex w-full my-5 items-center justify-center gap-7 justify-items-center text-gray-900'>
+      <div class='flex w-full my-5 items-center justify-center gap-7 justify-items-center  text-gray-900 dark:text-white'>
         <span>Amount of items to buy: <span><%= @general_shopping_list.count%></span> </span>
         <span>Total price: <span><%= @total%></span></span>
       </div>
@@ -21,9 +21,9 @@
             </tr>
           </tbody>
         <% else %>
-          <tbody class="text-gray-900 text-sm font-light">
+          <tbody class=" text-gray-900 dark:text-white text-sm font-light">
             <% @general_shopping_list.each do |food| %>
-              <tr class="border-b border-gray-300 hover:bg-gray-200">
+              <tr class="border-b border-gray-300 hover:bg-gray-200 dark:hover:bg-black dark:hover:shadow-custom">
                 <td class="px-6 py-4 whitespace-no-wrap"><%= food[:name] %></td>
                 <td class="px-6 py-4 whitespace-no-wrap"><%= food[:quantity] %></td>
                 <td class="px-6 py-4 whitespace-no-wrap"><%= "$ #{food[:price] * food[:quantity]}" %></td>

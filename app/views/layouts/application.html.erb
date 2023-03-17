@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="light">
   <head>
     <title>RecipeApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -21,7 +21,8 @@
         backgroundColor: "#f1f5f9",
         textColor: "#1f2937",
         variantColor: "#fdba74",
-        mainTheme: 'black'
+        mainTheme: 'black',
+        darkTheme: '#06b6d4',
       },
       boxShadow: {
         "custom": '-1px 1px 20px 7px red'
@@ -34,12 +35,14 @@
     fontSize: {
       important: ["1.5rem", "1.25rem"],
     },
-  }
+  },
+  darkMode: 'class',
+
       }
     </script>
     <%= javascript_importmap_tags %>
   </head>
-  <body class="text-textColor text-base bg-backgroundColor font-normal font-[400px]">
+  <body class="text-textColor dark:!text-white dark:bg-black text-base bg-backgroundColor font-normal font-[400px]">
     <%= render partial: "/components/navbar" %>
     <main>
       <div>
