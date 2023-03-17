@@ -1,6 +1,5 @@
 <section class="min-h-screen bg-gray-200 py-6">
   <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-    <%= render partial: "/components/validation_message" %>
     <h1 class="font-bold text-center text-2xl bg-blue-600 text-white py-2 mb-6 rounded-md">Add ingredient</h1>
     <%= form_with url: user_recipe_recipe_foods_path(params[:recipe_id]), method: :post do |form| %>
       <div class="mb-4">
