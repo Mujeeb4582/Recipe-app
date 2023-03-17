@@ -9,5 +9,4 @@ RSpec.describe User, type: :model do
   it 'has name' do
     expect(user.name).to be_present
   end
-
 end

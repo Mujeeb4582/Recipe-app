@@ -25,7 +25,7 @@ describe '/users/:user_id/recipes/:recipe_id/general_shopping_list', type: :feat
     expect(page).to have_text(food.name)
     recipe_foods = RecipeFood.where(recipe_id: recipe.id).includes(:food)
     recipe_foods_with_names = recipe_foods.map do |rf|
-      { id: rf.id, quantity: rf.quantity, recipe_id: rf.recipe_id, food_id: rf.food_id, name: rf.food.name}
+      { id: rf.id, quantity: rf.quantity, recipe_id: rf.recipe_id, food_id: rf.food_id, name: rf.food.name }
     end
     total_foods_to_buy, total_price = user.general_shopping_list(recipe_foods_with_names)
     expect(page).to have_text("Amount of items to buy: #{total_foods_to_buy.length}")

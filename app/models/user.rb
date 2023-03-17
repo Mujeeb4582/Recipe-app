@@ -17,20 +17,20 @@ class User < ApplicationRecord
       food_in_shopping_list?(food, recipe_food, missing_foods)
     end
     total = missing_foods.sum { |food| food[:price] * food[:quantity] }
-    return missing_foods, total
+    [missing_foods, total]
   end
 
   def food_in_shopping_list?(food, recipe_food, missing_foods)
     # p [food, recipe_food, missing_foods, "TES"]
     if food.nil?
-      return missing_foods << {
+      missing_foods << {
         name: recipe_food[:name],
         quantity: recipe_food[:quantity],
         price: recipe_food[:price],
         test: false
       }
     elsif food.quantity < recipe_food[:quantity]
-      return missing_foods << {
+      missing_foods << {
         name: food.name,
         quantity: (recipe_food[:quantity] - food.quantity),
         price: food.price,
