@@ -93,4 +93,5 @@ gem 'minitest', '~> 5.14'
 gem 'faker'
 group :test do
   gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
 end
