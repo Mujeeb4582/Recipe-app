@@ -7,7 +7,7 @@
     <ul class="flex flex-col gap-5 mt-4">
       <% @recipes.each do |recipe|%>
         <li>
-          <a href="/users/<%= recipe.user_id%>/recipes/<%=recipe.id%>" class="grid grid-cols-1 sm:grid-cols-3 p-3 bg-gradient-to-r hover:shadow-custom min-h-[130px] text-start border-b border-black cursor-pointer rounded-md">
+          <a href="/users/<%= recipe.user_id%>/recipes/<%=recipe.id%>" class="description grid grid-cols-1 sm:grid-cols-3 p-3 bg-gradient-to-r hover:shadow-custom min-h-[130px] text-start border-b border-black cursor-pointer rounded-md">
             <div class="col-span-1 relative flex flex-col justify-center items-center">
               <h2 class="font-important text-important"><%= recipe.name %></h2>
               <span>By: <%= recipe.user.name%></span>
@@ -21,5 +21,23 @@
       <%end%>
     </ul>
   </div>
+
+  <ul class="flex flex-col gap-5 mt-4">
+    <% @recipes.each do |recipe|%>
+      <li>
+        <a href="/users/<%= recipe.user_id%>/recipes/<%=recipe.id%>" class="grid grid-cols-1 sm:grid-cols-3 p-3 bg-gradient-to-r hover:shadow-custom min-h-[130px] text-start border-b border-black cursor-pointer rounded-md">
+          <div class="col-span-1 relative flex flex-col justify-center items-center">
+            <h2 class="font-important text-important"><%= recipe.name %></h2>
+            <span>By: <%= recipe.user.name%></span>
+          </div>
+          <p class="col-span-2 py-4 px-2 flex flex-col">
+            <span>Total Food Items:<%= recipe.foods_count%> </span>
+            <span>Total Price: <%= recipe.total_price%></span>
+          </p>
+        </a>
+      </li>
+    <%end%>
+  </ul>
+</div>
 
 <%end%>
