@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html class="light">
   <head>
     <title>RecipeApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <%= stylesheet_link_tag "navbar", "data-turbo-track": "reload" %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,31 +17,34 @@
     <script>
       tailwind.config = {
         theme: {
-          extend: {
+    extend: {
       colors: {
         // Configure your color palette here
         backgroundColor: "#f1f5f9",
         textColor: "#1f2937",
         variantColor: "#fdba74",
-        mainTheme: 'black'
+        mainTheme: 'black',
+        darkTheme: '#06b6d4',
       },
       boxShadow: {
         "custom": '-1px 1px 20px 7px red'
       }
-          },
-          fontFamily: {
+    },
+    fontFamily: {
       important: ["Josefin Sans", "sans-serif"],
       normal: ["Josefin Sans", "sans-serif"],
-          },
-          fontSize: {
+    },
+    fontSize: {
       important: ["1.5rem", "1.25rem"],
-          },
-        }
+    },
+  },
+  darkMode: 'class',
+
       }
     </script>
     <%= javascript_importmap_tags %>
   </head>
-  <body class="text-textColor text-base bg-backgroundColor font-normal font-[400px]">
+  <body class="text-textColor dark:!text-white dark:bg-black text-base bg-backgroundColor font-normal font-[400px]">
     <%= render partial: "/components/navbar" %>
     <main>
       <div>

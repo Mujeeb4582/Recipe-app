@@ -48,6 +48,7 @@
             <td class="px-6 py-4 whitespace-no-wrap"><%= ingredient.food.name %></td>
             <td class="px-6 py-4 whitespace-no-wrap"><%= ingredient.quantity %></td>
             <td class="px-6 py-4 whitespace-no-wrap">$ <%= ingredient.quantity* ingredient.food.price %></td>
+           <% if can? :delete,@recipe %>
             <td class="whitespace-no-wrap flex justify-center py-4 gap-2">
               <%= button_to user_recipe_recipe_food_path(@recipe.user, @recipe.id, ingredient.id), method: :delete, class: "inline-flex items-center justify-center px-2 py-1 border border-transparent font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" do %>
                 <%= render partial: "/components/delete_svg" %>
@@ -55,6 +56,7 @@
               <% end %>
               <%= render partial: "/components/edit_button", locals: { ingredient: ingredient } %>
             </td>
+           <%end%>
           </tr>
         <% end %>
         <tr>
