@@ -6,7 +6,7 @@
         <span>Amount of items to buy: <span><%= @general_shopping_list.count%></span> </span>
         <span>Total value of food needed: <span><%= @total%></span></span>
       </div>
-  <table class="table-auto w-full mt-4">
+      <table class="table-auto w-full mt-4">
         <thead>
           <tr class="bg-gray-800 text-white uppercase text-sm leading-normal">
             <th class="px-6 py-3 text-center">Food</th>
@@ -27,11 +27,11 @@
                 <td class="px-6 py-4 whitespace-no-wrap"><%= food[:name] %></td>
                 <td class="px-6 py-4 whitespace-no-wrap"><%= food[:quantity] %></td>
                 <td class="px-6 py-4 whitespace-no-wrap"><%= "$ #{food[:price] * food[:quantity]}" %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      <% end %>
-    </table>
+              </tr>
+            <% end %>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
   </div>
-</div>
 </div>
