@@ -2,12 +2,12 @@
 <%if@recipes.empty?%>
 <h1 class="text-important font-important text-center">There is no public recipe.</h1>
 <%else%>
-<h1 class="font-important text-important text-center mt-3 mb-6">Public Recipes</h1>
+<div class="px-4 py-6"><h1 class="font-bold text-important bg-mainTheme text-white py-4 rounded-md text-center">Public Recipes</h1>
 
-<ul class="flex flex-col gap-5">
+<ul class="flex flex-col gap-5 mt-4">
   <% @recipes.each do |recipe|%>
   <li>
-    <a href="/users/<%= recipe.user_id%>/recipes/<%=recipe.id%>" class="grid grid-cols-1 sm:grid-cols-3 p-3 bg-gradient-to-r hover:from-orange-400 hover:to-yellow-500 min-h-[130px] text-start hover:shadow-[10px_9px_#00a195] border-b border-black cursor-pointer rounded-md">
+    <a href="/users/<%= recipe.user_id%>/recipes/<%=recipe.id%>" class="grid grid-cols-1 sm:grid-cols-3 p-3 bg-gradient-to-r hover:shadow-custom min-h-[130px] text-start border-b border-black cursor-pointer rounded-md">
       <div class="col-span-1 relative flex flex-col justify-center items-center">
         <h2 class="font-important text-important"><%= recipe.name %></h2>
         <span>By: <%= recipe.user.name%></span>
@@ -20,5 +20,7 @@
     </li>
   <%end%>
 </ul>
+</div>
+
 
 <%end%>

@@ -9,7 +9,7 @@ class Recipe < ApplicationRecord
   end
 
   def foods_count
-    foods.count
+    foods.length
   end
   scope :public_recipes, -> { where(public: true).order(created_at: :desc) }
 

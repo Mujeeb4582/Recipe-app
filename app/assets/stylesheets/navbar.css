@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #262626;
+  --primary-color: black;
   --secondary-color: #fff;
   --highlight-color: #a00;
   --highlight-dark-color: #f00;
@@ -42,6 +42,7 @@ nav {
   text-decoration: none;
   position: relative;
   transition: color 0.2s ease-in-out;
+  font-style: oblique;
 }
 
 .nav-link:hover {
@@ -82,4 +83,29 @@ nav {
 
 main {
   margin-top: 5rem;
+}
+
+.auth-link {
+  color: var(--primary-color);
+  margin-right: 30px;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s ease-in-out;
+}
+
+.auth-link:hover {
+  color: var(--highlight-color);
+}
+
+.auth-link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: var(--highlight-color);
+  transition: width 0.2s ease-in-out;
+}
+
+.auth-link:hover::after {
+  width: 100%;
 }

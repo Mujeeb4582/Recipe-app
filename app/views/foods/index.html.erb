@@ -1,16 +1,17 @@
 <div class="py-6">
   <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center">
-      <h1 class="font-bold text-important bg-gray-800 text-white py-4 rounded-md">Foods List</h1>
+      <h1 class="font-bold text-important bg-mainTheme text-white py-4 rounded-md">Foods List</h1>
       <%= render partial: "/components/message" %>
       <div class='float-right mt-4 mb-4'>
         <button class='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded'>
           <%= link_to "Add Food", new_user_food_path %></button>
       </div>
+      <div class="overflow-auto table-auto w-full mt-4">
       <table class="table-auto w-full mt-4">
         <thead>
-          <tr class="bg-gray-800 text-white uppercase text-sm leading-normal">
-            <th class="px-6 py-3 text-center">Food</th>
+          <tr class="bg-mainTheme text-white uppercase text-sm leading-normal">
+            <th class="sm:px-6 sm:py-3 px-2 py-2 text-center">Food</th>
             <th class="px-6 py-3 text-center">Measurement Unit</th>
             <th class="px-6 py-3 text-center">Unit Price</th>
             <th class="px-6 py-3 text-center">Actions</th>
@@ -41,6 +42,7 @@
         </tbody>
       <% end %>
     </table>
+      </div>
   </div>
 </div>
 </div>
