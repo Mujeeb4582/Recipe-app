@@ -3,8 +3,7 @@
  <h1 class="font-bold text-important bg-mainTheme text-white py-4 rounded-md text-center">Recipes List</h1>
       <%= render partial: "/components/message" %>
   <div class='float-right w-full mt-4 mb-4'>
-        <button class='bg-blue-500 float-right hover:bg-blue-600 text-white font-bold py-2 px-4 rounded '>
-          <%= link_to "Add Recipe",  new_user_recipe_path(current_user) %></button>
+<%= link_to "Add Recipe",  new_user_recipe_path(current_user),id: "new-recipe", class: "bg-blue-500 float-right hover:bg-blue-600 text-white font-bold py-2 px-4 rounded " %>
   </div>
  </div>
 <%if @recipes.empty? %>
