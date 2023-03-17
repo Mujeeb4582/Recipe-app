@@ -17,7 +17,7 @@
      </h1>
 
   <ul class="flex flex-col gap-8">
-    <% @recipes.includes(:user).each do |recipe|%>
+    <% @recipes.each do |recipe|%>
       <% if ((can? :read, recipe) || (recipe.public == true)) %>
         <li class=" text-start  border-b border-black rounded-md mt-4">
             <div class="min-h-[130px] h-full grid grid-cols-1 sm:grid-cols-3 p-3  py-4 px-2 hover:shadow-custom">
