@@ -20,6 +20,7 @@ nav {
   background-color: var(--primary-color);
   color: var(--secondary-color);
   height: 80px;
+  z-index: 999;
   padding: 0 30px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
 }
