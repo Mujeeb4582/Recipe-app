@@ -6,8 +6,8 @@ RSpec.describe RecipesController, type: :controller do
   describe 'Testing routes' do
     login_user
     let(:user) { controller.current_user }
-    let(:recipe) { FactoryBot.create(:recipe, user: user) }
-    context 'when user is logged in' do
+    let(:recipe) { FactoryBot.create(:recipe, user:) }
+    describe 'when user is logged in' do
       it 'should return a 200 response' do
         get 'index', params: { user_id: user.id }
         expect(response).to have_http_status(200)
@@ -20,22 +20,22 @@ RSpec.describe RecipesController, type: :controller do
 
       describe 'POST #create' do
         context 'when valid params are passed' do
-          let(:user) { controller.current_user}
-          let(:valid_params) {
+          let(:user) { controller.current_user }
+          let(:valid_params) do
             {
               recipe: {
                 name: 'Spaghetti',
                 description: 'A classic Italian dish',
-                instructions: 'Cook the spaghetti according to package instructions. Heat the sauce in a separate pan...'
+                instructions: 'Cook the spaghetti according to package instructions. Heat the sauce in a separate pan..'
               },
               user_id: user.id
             }
-          }
+          end
 
           it 'creates a new recipe' do
-            expect {
+            expect do
               post :create, params: valid_params
-            }.to change(Recipe, :count).by(1)
+            end.to change(Recipe, :count).by(1)
           end
 
           it 'redirects to the user recipes page' do
@@ -51,21 +51,21 @@ RSpec.describe RecipesController, type: :controller do
 
         context 'when invalid params are passed' do
           let(:user) { FactoryBot.create(:user) }
-          let(:invalid_params) {
+          let(:invalid_params) do
             {
               recipe: {
                 name: '',
                 description: 'A classic Italian dish',
-                instructions: 'Cook the spaghetti according to package instructions. Heat the sauce in a separate pan...'
+                instructions: 'Cook the spaghetti according to package instructions. Heat the sauce in a separate pan..'
               },
               user_id: user.id
             }
-          }
+          end
 
           it 'does not create a new recipe' do
-            expect {
+            expect do
               post :create, params: invalid_params
-            }.not_to change(Recipe, :count)
+            end.not_to change(Recipe, :count)
           end
 
           it 'sets a flash message' do
@@ -77,7 +77,7 @@ RSpec.describe RecipesController, type: :controller do
 
       describe '#destroy' do
         context 'when recipe exists' do
-          before { delete :destroy, params: { user_id: user.id,id: recipe.id } }
+          before { delete :destroy, params: { user_id: user.id, id: recipe.id } }
 
           it 'deletes the recipe' do
             expect(Recipe.exists?(recipe.id)).to be_falsey
@@ -93,16 +93,14 @@ RSpec.describe RecipesController, type: :controller do
         end
 
         context 'when recipe does not exist' do
-          before { delete :destroy, params: { user_id: user.id,id: 'invalid_id' } }
-
-
+          before { delete :destroy, params: { user_id: user.id, id: 'invalid_id' } }
         end
 
         context 'when recipe cannot be deleted' do
           before do
             allow(Recipe).to receive(:find_by).and_return(recipe)
             allow(recipe).to receive(:destroy).and_return(false)
-            delete :destroy, params: { user_id: user.id,id: recipe.id }
+            delete :destroy, params: { user_id: user.id, id: recipe.id }
           end
 
           it 'redirects to the previous page' do
@@ -117,38 +115,35 @@ RSpec.describe RecipesController, type: :controller do
 
       describe '#show' do
         context 'when recipe exists' do
-
           it 'should have a 200 status code' do
-            get :show, params: { user_id: user.id,id: recipe.id }
+            get :show, params: { user_id: user.id, id: recipe.id }
             expect(response).to have_http_status(200)
           end
         end
 
         context 'when recipe does not exist' do
           it 'should render 404 page' do
-            get :show, params: { user_id: user.id,id: -1 }
+            get :show, params: { user_id: user.id, id: -1 }
             expect(response).to have_http_status(404)
           end
         end
       end
 
-      describe "GET #new" do
-
-        context "when user is logged in" do
-          it "have http 200" do
+      describe 'GET #new' do
+        context 'when user is logged in' do
+          it 'have http 200' do
             get :new, params: { user_id: user.id }
             expect(response).to have_http_status(200)
           end
         end
 
-        context "when user is not logged in or no user" do
-          it "returns a 404 error" do
+        context 'when user is not logged in or no user' do
+          it 'returns a 404 error' do
             get :new, params: { user_id: -1 }
             expect(response).to have_http_status(404)
           end
         end
       end
-
     end
   end
 end
