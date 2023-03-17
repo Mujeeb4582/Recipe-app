@@ -11,4 +11,9 @@ class Recipe < ApplicationRecord
   def foods_count
     foods.length
   end
+  scope :public_recipes, -> { where(public: true).order(created_at: :desc) }
+
+  def toggle_privacy!
+    update(public: !public)
+  end
 end

@@ -19,6 +19,12 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
+  def toggle_privacy
+    @recipe = Recipe.find(params[:id])
+    @recipe.toggle_privacy!
+    redirect_to user_recipe_path(@recipe)
+  end
+
   def create
     @recipe = current_user.recipes.new(recipe_params)
     if @recipe.save
