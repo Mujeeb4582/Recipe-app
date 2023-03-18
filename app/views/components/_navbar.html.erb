@@ -1,16 +1,16 @@
     <nav class="bg-mainTheme dark:bg-darkTheme z-50">
       <div class="logo">
-                <%= link_to "Recipes", root_path, class: "" %>
+                <%= link_to "Recipes", root_path, class: "text-[1.5rem] sm:text-[2rem]" %>
       </div>
       <div class="nav-links">
         <% if user_signed_in? %>
-          <div class="user-info hidden sm:block">
+          <div class="user-info hidden md:block">
             Logged in as <%= current_user.name %>
           </div>
-          <%= link_to "Home", root_path, class: "nav-link" %>
-          <%= link_to "Food List", user_foods_path(current_user), class: "nav-link" %>
-          <%= link_to "Recipe List", user_recipes_path(current_user), class: "nav-link" %>
-          <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %>
+          <%= link_to "Home", root_path, class: "nav-link sm:block hidden" %>
+          <%= link_to "Foods", user_foods_path(current_user), class: "nav-link" %>
+          <%= link_to "Recipes", user_recipes_path(current_user), class: "nav-link" %>
+          <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link hidden sm:block" %>
           <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "logout-btn" %>
           <div class="theme-changer hover:shadow-custom rounded-full p-1 cursor-pointer">
             <div class="light-theme">
