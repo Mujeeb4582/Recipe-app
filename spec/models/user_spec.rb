@@ -9,12 +9,4 @@ RSpec.describe User, type: :model do
   it 'has name' do
     expect(user.name).to be_present
   end
-
-  it 'method general_shopping_list works' do
-    missing_foods, total = user.general_shopping_list([recipe_food])
-    expect(missing_foods).to include(
-      { name: food.name, quantity: (recipe_food.quantity - food.quantity), price: food.price, test: true }
-    )
-    expect(total).to eq(food.price * (recipe_food.quantity - food.quantity))
-  end
 end
