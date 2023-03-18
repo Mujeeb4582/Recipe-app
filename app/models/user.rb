@@ -10,10 +10,32 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   def general_shopping_list(recipe_foods)
+    missing_foods = []
     all_foods = foods
-    missing_foods = all_foods.reject { |food| recipe_foods.any? { |hash| hash[:name] == food.name } }
+    recipe_foods.each do |recipe_food|
+      food = all_foods.select { |f| f.name.downcase == recipe_food[:name].downcase }.first
+      food_in_shopping_list?(food, recipe_food, missing_foods)
+    end
     total = missing_foods.sum { |food| food[:price] * food[:quantity] }
     [missing_foods, total]
+  end
+
+  def food_in_shopping_list?(food, recipe_food, missing_foods)
+    if food.nil?
+      missing_foods << {
+        name: recipe_food[:name],
+        quantity: recipe_food[:quantity],
+        price: recipe_food[:price],
+        test: false
+      }
+    elsif food.quantity < recipe_food[:quantity]
+      missing_foods << {
+        name: food.name,
+        quantity: (recipe_food[:quantity] - food.quantity),
+        price: food.price,
+        test: true
+      }
+    end
   end
 
   def admin?
