@@ -1,0 +1,37 @@
+<div class="py-6">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h1 class="font-bold text-4xl bg-gray-800 text-white py-2 rounded-md">Shopping List</h1>
+      <div class='flex w-full my-5 items-center justify-center gap-7 justify-items-center text-gray-900'>
+        <span>Amount of items to buy: <span><%= @general_shopping_list.count%></span> </span>
+        <span>Total price: <span><%= @total%></span></span>
+      </div>
+      <table class="table-auto w-full mt-4">
+        <thead>
+          <tr class="bg-gray-800 text-white uppercase text-sm leading-normal">
+            <th class="px-6 py-3 text-center">Food</th>
+            <th class="px-6 py-3 text-center">Quantity</th>
+            <th class="px-6 py-3 text-center">Price</th>
+          </tr>
+        </thead>
+        <% if @general_shopping_list.empty? %>
+          <tbody>
+            <tr class="border-b border-gray-300">
+              <td colspan="4" class="px-6 py-4 whitespace-no-wrap text-red-600  hover:text-red-700">You don't have to buy anything!!</td>
+            </tr>
+          </tbody>
+        <% else %>
+          <tbody class="text-gray-900 text-sm font-light">
+            <% @general_shopping_list.each do |food| %>
+              <tr class="border-b border-gray-300 hover:bg-gray-200">
+                <td class="px-6 py-4 whitespace-no-wrap"><%= food[:name] %></td>
+                <td class="px-6 py-4 whitespace-no-wrap"><%= food[:quantity] %></td>
+                <td class="px-6 py-4 whitespace-no-wrap"><%= "$ #{food[:price] * food[:quantity]}" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
