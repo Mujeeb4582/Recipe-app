@@ -12,9 +12,6 @@ describe '/general_shopping_list/:recipe_id', type: :feature do
     expect(page).to have_text('Signed in successfully.')
   end
 
-  # let!(:food) { FactoryBot.create(:food, user:) }
-  # let!(:food2) { FactoryBot.create(:food, user:) }
-
   scenario 'we can see the shopping list, and their data' do
     recipe = FactoryBot.create(:recipe, user:)
     food = FactoryBot.create(:food, user:)

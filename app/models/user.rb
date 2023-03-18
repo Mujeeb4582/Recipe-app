@@ -21,7 +21,6 @@ class User < ApplicationRecord
   end
 
   def food_in_shopping_list?(food, recipe_food, missing_foods)
-    # p [food, recipe_food, missing_foods, "TES"]
     if food.nil?
       missing_foods << {
         name: recipe_food[:name],
