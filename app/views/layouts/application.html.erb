@@ -9,6 +9,7 @@
    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <%= javascript_include_tag 'nav' %>
     <%= stylesheet_link_tag "navbar", "data-turbo-track": "reload" %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +43,6 @@
 
       }
     </script>
-    <%= javascript_importmap_tags %>
   </head>
   <body class="text-textColor dark:!text-white dark:bg-black text-base bg-backgroundColor font-normal font-[400px]">
     <%= render partial: "/components/navbar" %>
