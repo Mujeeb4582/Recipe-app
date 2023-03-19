@@ -100,7 +100,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
     :user_name =>     ENV['MAIL_USERNAME'],
-    :password =>    ENV['MAIL_PASSWORD']
+    :password =>    ENV['MAIL_PASSWORD'],
     :domain =>     "google.com",
     :address =>      'smtp.gmail.com',
     :port =>     587,
