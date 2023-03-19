@@ -22,15 +22,11 @@
       <%= @recipe.description %>
     </p>
     <div class='float-left mb-4'>
-      <button class='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded'>
-        <%= link_to "Generate shopping list", general_shopping_list_path(@recipe) %>
-      </button>
+        <%= link_to "Generate shopping list", general_shopping_list_path(@recipe), class: 'bg-blue-500 hover:bg-blue-600 text-white font-bold pt-4 pb-3 px-4 rounded' %>
     </div>
     <% if can? :create, @recipe %>
       <div class='float-right mb-4'>
-        <button class='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded'>
-          <%= link_to "Add ingredient", new_user_recipe_recipe_food_path(@recipe.user, @recipe)%>
-        </button>
+          <%= link_to "Add ingredient", new_user_recipe_recipe_food_path(@recipe.user, @recipe), class: 'bg-blue-500 hover:bg-blue-600 text-white font-bold pt-4 pb-3 px-4 rounded'%>
       </div>
     <% end %>
     <table class="table-auto w-full mt-4">
