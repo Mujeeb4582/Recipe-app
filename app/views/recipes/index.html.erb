@@ -1,6 +1,7 @@
+
 <div class="flex flex-col gap-3 px-4 py-6">
-  <h1 class="font-bold text-important bg-mainTheme text-white py-4 rounded-md text-center">Recipes List</h1>
-  <%= render partial: "/components/message" %>
+<h1 class="font-bold text-important bg-mainTheme dark:bg-darkTheme text-white py-4 rounded-md text-center">Recipes List</h1>
+      <%= render partial: "/components/message" %>
   <div class='float-right w-full mt-4 mb-4'>
     <%= link_to "Add Recipe",  new_user_recipe_path(current_user),id: "new-recipe", class: "bg-blue-500 float-right hover:bg-blue-600 text-white font-bold py-2 px-4 rounded " %>
   </div>
@@ -9,15 +10,15 @@
   <h1 class="text-important font-important text-center">The list is empty</h1>
 <%else%>
   <div class="px-4">
-    <h1 class="font-bold text-important bg-mainTheme text-white py-4 rounded-md text-center grid grid-cols-1 sm:grid-cols-3 p-3">
-      <span class="col-span-1">Recipes Name</span>
-      <span class="sm:col-span-2 hidden sm:inline">Description</span>
+    <h1 class="font-bold text-important bg-mainTheme dark:bg-darkTheme text-white py-4 rounded-md text-center grid grid-cols-1 sm:grid-cols-3 p-3">
+    <span class="col-span-1">Recipes Name</span>
+    <span class="sm:col-span-2 hidden sm:inline">Description</span>
     </h1>
 
-    <ul class="flex flex-col gap-8">
-      <% @recipes.each do |recipe|%>
-        <% if ((can? :read, recipe) || (recipe.public == true)) %>
-          <li class=" text-start  border-b border-black rounded-md mt-4">
+  <ul class="flex flex-col gap-8">
+    <% @recipes.each do |recipe|%>
+      <% if ((can? :read, recipe) || (recipe.public == true)) %>
+        <li class=" text-start  border-b border-black dark:border-darkTheme rounded-md mt-4">
             <div class="min-h-[130px] h-full grid grid-cols-1 sm:grid-cols-3 p-3  py-4 px-2 hover:shadow-custom">
               <div class="col-span-1  relative flex flex-col text-center">
                 <h2 class="font-important text-important text-center m-auto"><%= recipe.name %></h2>
@@ -26,7 +27,7 @@
                 <%end%>
               </div>
               <a href="/users/<%= @user.id%>/recipes/<%=recipe.id%>" class="cursor-pointer description">
-                <p class="col-span-2"><%= recipe.description %></p>
+                <p class="col-span-2 pt-6"><%= recipe.description %></p>
               </a>
             </div>
           </li>
