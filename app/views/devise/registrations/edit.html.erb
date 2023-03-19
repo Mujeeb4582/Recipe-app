@@ -1,43 +1,46 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="sm:px-[20%] px-[10%] py-6">
+<h2 class="font-bold text-important bg-mainTheme text-white py-4 rounded-md text-center my-5">Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :class => "flex flex-col text-lg min-w-[300px] items-center font-normal gap-5" }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="field py-4 w-full sm:w-[50%]">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "dark:text-black border focus:dark:border-darkTheme foucs:border focus:dark:shadow-custom mt-3 rounded-lg bg-orange-200 border px-2 focus:outline-none w-full py-2 text-xl"  %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
+  <div class="field py-4 w-full sm:w-[50%]">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "dark:text-black border focus:dark:border-darkTheme foucs:border focus:dark:shadow-custom mt-3 rounded-lg bg-orange-200 border px-2 focus:outline-none w-full py-2 text-xl"  %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
   </div>
 
-  <div class="field">
+  <div class="field py-4 w-full sm:w-[50%]">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "dark:text-black border focus:dark:border-darkTheme foucs:border focus:dark:shadow-custom mt-3 rounded-lg bg-orange-200 border px-2 focus:outline-none w-full py-2 text-xl"  %>
   </div>
 
-  <div class="field">
+  <div class="field py-4 w-full sm:w-[50%]">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.password_field :current_password, autocomplete: "current-password", class: "dark:text-black border focus:dark:border-darkTheme foucs:border focus:dark:shadow-custom mt-3 rounded-lg bg-orange-200 border px-2 focus:outline-none w-full py-2 text-xl"  %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+  <div class="actions text-center">
+    <%= f.submit "Update", class: "dark:border-darkTheme dark:hover:shadow-custom actions px-6 inline-flex items-center justify-center py-1 border border-transparent text-xs font-medium rounded-md text-white bg-mainTheme cursor-pointer hover:bg-slate-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" %>
   </div>
 <% end %>
+<div class="flex flex-col text-lg min-w-[300px] items-center font-normal gap-5 mt-4">
+<h3 class='text-red-700'>Cancel my account</h3>
 
-<h3>Cancel my account</h3>
+<div class= "text-center">Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "mt-2 dark:border-darkTheme dark:hover:shadow-custom actions px-6 inline-flex items-center justify-center py-1 border border-transparent text-xs font-medium rounded-md text-white bg-mainTheme cursor-pointer hover:bg-slate-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" %></div>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+<%= link_to "Back", :back, class: "dark:border-darkTheme dark:hover:shadow-custom actions px-6 inline-flex items-center justify-center py-1 border border-transparent text-xs font-medium rounded-md text-white bg-mainTheme cursor-pointer hover:bg-slate-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" %>
+</div>
+</div>
