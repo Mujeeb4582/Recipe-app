@@ -34,6 +34,9 @@
 
 > The Recipe App enables users to conveniently manage their recipes, ingredients, and inventory. Users can save ingredients, track their availability, create recipes, and generate a comprehensive shopping list that takes into account the ingredients they have and those they need for a particular recipe. Moreover, as sharing recipes is a crucial aspect of cooking, the application allows users to make their recipes public for easy access by anyone.
 
+## App Screen-Shots
+![Recipe-APP](https://github.com/Mujeeb4582/Recipe-app/assets/109666020/59f75a12-75c1-4cc6-b2b3-a14918af0395)
+
 ## 🛠 Built With <a name="built-with"></a>
 
 ![ruby-on-rails](https://img.shields.io/badge/ruby_on_rails-%23CC342D.svg?style=for-the-badge&logo=ruby&logoColor=white)
